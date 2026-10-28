@@ -1,0 +1,30 @@
+name: Resonance
+options:
+  bundleIdPrefix: tech.fanch
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    GENERATE_INFOPLIST_FILE: YES
+    INFOPLIST_KEY_CFBundleDisplayName: 余音
+    INFOPLIST_KEY_CFBundleName: 余音
+    INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.music
+    ASSETCATALOG_COMPILER_APPICON_NAME: ""
+    ENABLE_APP_SANDBOX: NO
+targets:
+  Resonance:
+    type: application
+    platform: macOS
+    sources:
+      - Sources
+      - Assets.xcassets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: tech.fanch.resonance.preview
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+schemes:
+  Resonance:
+    build:
+      targets:
+        Resonance: all

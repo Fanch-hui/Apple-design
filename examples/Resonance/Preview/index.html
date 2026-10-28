@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>余音 · 原生 Mac 播放器</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+      color: #262624;
+      background: #f5f4f1;
+      -webkit-font-smoothing: antialiased;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { width: min(100%, 1520px); margin: 0 auto; padding: 56px 40px 84px; }
+    header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #deddd8;
+    }
+    .brand { margin: 0 0 9px; color: #6e6b65; font-size: 14px; font-weight: 600; }
+    h1 { margin: 0; font-size: clamp(26px, 2.8vw, 38px); font-weight: 650; letter-spacing: -.03em; }
+    .intro { margin: 0 0 3px; color: #74716a; font-size: 13px; line-height: 1.5; text-align: right; }
+    .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 24px; padding-top: 34px; }
+    figure { min-width: 0; margin: 0; }
+    .preview {
+      display: block; width: 100%; padding: 0; border: 0; background: transparent;
+      cursor: zoom-in; transition: transform .18s ease;
+    }
+    .preview:hover { transform: translateY(-3px); }
+    .preview:focus-visible, .control:focus-visible { outline: 3px solid #547794; outline-offset: 4px; }
+    .preview img {
+      display: block; width: 100%; height: auto; background: #e8e8e5;
+      box-shadow: 0 5px 22px rgba(39, 37, 32, .10);
+    }
+    figcaption { display: flex; align-items: baseline; gap: 10px; padding: 14px 2px 0; }
+    .number { color: #a29f98; font-size: 12px; font-variant-numeric: tabular-nums; }
+    .label { font-size: 15px; font-weight: 600; }
+    dialog {
+      width: min(96vw, 1460px); max-height: calc(100vh - 32px); padding: 20px;
+      border: 0; border-radius: 16px; color: #252523; background: #fafaf9;
+      box-shadow: 0 24px 80px rgba(20, 20, 18, .28);
+    }
+    dialog::backdrop { background: rgba(24, 25, 26, .72); }
+    .dialog-head, .dialog-nav { display: flex; align-items: center; gap: 12px; }
+    .dialog-head { justify-content: space-between; margin-bottom: 16px; }
+    .dialog-head h2 { margin: 0; font-size: 16px; font-weight: 600; }
+    .control {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 34px; padding: 0 12px; border: 1px solid #dededb; border-radius: 7px;
+      background: #fff; color: #30302e; font: inherit; font-size: 13px; cursor: pointer;
+    }
+    .control:disabled { color: #b5b3af; cursor: default; }
+    .close { width: 34px; padding: 0; font-size: 22px; line-height: 1; }
+    .dialog-image { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 155px); margin: auto; }
+    .dialog-nav { justify-content: center; margin-top: 16px; }
+    .count { min-width: 60px; text-align: center; color: #77746e; font-size: 12px; font-variant-numeric: tabular-nums; }
+    @supports (height: 100dvh) {
+      dialog { max-height: calc(100dvh - 32px); }
+      .dialog-image { max-height: calc(100dvh - 155px); }
+    }
+    @media (max-width: 720px) {
+      main { padding: 36px 20px 56px; }
+      header { display: block; padding-bottom: 22px; }
+      .intro { margin-top: 12px; text-align: left; }
+      .gallery { grid-template-columns: 1fr; gap: 32px; padding-top: 26px; }
+      dialog { padding: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .preview { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="brand">余音</p>
+        <h1>原生 Mac 播放器</h1>
+      </div>
+      <p class="intro">10 个页面预览 · 点击截图放大查看</p>
+    </header>
+
+    <div class="gallery">
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看精选首页"><img src="Listen.jpg" alt="精选首页"></button>
+        <figcaption><span class="number">01</span><span class="label">精选首页</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看专辑资料库"><img src="Albums.jpg" alt="专辑资料库" loading="lazy"></button>
+        <figcaption><span class="number">02</span><span class="label">专辑资料库</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看全部歌曲"><img src="Songs.jpg" alt="全部歌曲" loading="lazy"></button>
+        <figcaption><span class="number">03</span><span class="label">全部歌曲</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看晚风与耳机歌单"><img src="Evening.jpg" alt="晚风与耳机歌单" loading="lazy"></button>
+        <figcaption><span class="number">04</span><span class="label">晚风与耳机</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看专注时刻歌单"><img src="Focus.jpg" alt="专注时刻歌单" loading="lazy"></button>
+        <figcaption><span class="number">05</span><span class="label">专注时刻</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看专辑详情"><img src="Album.jpg" alt="专辑详情" loading="lazy"></button>
+        <figcaption><span class="number">06</span><span class="label">专辑详情</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看正在播放"><img src="Playing.jpg" alt="正在播放" loading="lazy"></button>
+        <figcaption><span class="number">07</span><span class="label">正在播放</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看待播清单"><img src="Queue.jpg" alt="待播清单" loading="lazy"></button>
+        <figcaption><span class="number">08</span><span class="label">待播清单</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看设置窗口"><img src="Settings.jpg" alt="独立设置窗口" loading="lazy"></button>
+        <figcaption><span class="number">09</span><span class="label">设置</span></figcaption>
+      </figure>
+      <figure>
+        <button class="preview" type="button" aria-label="放大查看深色模式"><img src="Listen-Dark.jpg" alt="深色模式精选首页" loading="lazy"></button>
+        <figcaption><span class="number">10</span><span class="label">深色模式</span></figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <dialog aria-labelledby="dialog-title">
+    <div class="dialog-head">
+      <h2 id="dialog-title"></h2>
+      <button class="control close" type="button" aria-label="关闭预览">×</button>
+    </div>
+    <img class="dialog-image" alt="">
+    <nav class="dialog-nav" aria-label="预览导航">
+      <button class="control previous" type="button">上一页</button>
+      <span class="count" aria-live="polite"></span>
+      <button class="control next" type="button">下一页</button>
+    </nav>
+  </dialog>
+
+  <script>
+    const previews = [...document.querySelectorAll('.preview')];
+    const dialog = document.querySelector('dialog');
+    const title = document.querySelector('#dialog-title');
+    const enlarged = document.querySelector('.dialog-image');
+    const count = document.querySelector('.count');
+    const previous = document.querySelector('.previous');
+    const next = document.querySelector('.next');
+    let current = 0;
+    let opener;
+
+    function show(index) {
+      if (index < 0 || index >= previews.length) return;
+      current = index;
+      const image = previews[current].querySelector('img');
+      title.textContent = image.alt;
+      enlarged.src = image.getAttribute('src');
+      enlarged.alt = image.alt;
+      count.textContent = `${String(current + 1).padStart(2, '0')} / ${previews.length}`;
+      previous.disabled = current === 0;
+      next.disabled = current === previews.length - 1;
+    }
+
+    previews.forEach((button, index) => button.addEventListener('click', () => {
+      opener = button;
+      show(index);
+      dialog.showModal();
+    }));
+    previous.addEventListener('click', () => show(current - 1));
+    next.addEventListener('click', () => show(current + 1));
+    document.querySelector('.close').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => opener?.focus());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!dialog.open) return;
+      if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "MacOS-design"
+  short_description: "依据项目规范设计、实现与审查 SwiftUI / AppKit 原生 macOS 界面"
+  default_prompt: "请使用 $macos-design，按照 macOS 原生应用设计规范完成当前界面设计或实现。"
