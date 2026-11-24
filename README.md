@@ -15,6 +15,8 @@ Native iOS and macOS design skills for AI coding agents, with SwiftUI sample app
 
 每个目录均包含独立的 `SKILL.md`、`agents/openai.yaml` 和 `references/`。详细规则按任务加载，系统原则与项目推荐值分别标记。版本相关能力按目标 SDK 与最低系统版本选择。
 
+视觉精修版补充了成套的布局密度、排版与光学对齐、深浅配色、组件状态和页面配方。按需可将层级、留白、对齐和信息密度用于其他平台，组件、尺寸与交互按目标平台调整。
+
 ## 安装到 Codex
 
 ```sh
@@ -71,12 +73,15 @@ ios-design/                 iOS Skill 与主题参考
 macos-design/               macOS Skill 与主题参考
 examples/Motion/            iOS 运动记录原型与 8 张截图
 examples/Resonance/         macOS 音乐播放器原型与 10 张截图
-docs/                      两份研究规范与页面总览
+docs/                      研究规范、视觉精修版与页面总览
 LICENSE                    MIT
 ```
 
 ## 资料与许可
 
-原始研究文档：[iOS 设计规范](docs/ios-guidelines-2026.md)、[macOS 设计规范](docs/macos-guidelines-2026.md)。Apple 官方资料和第三方研究出处分别保留在 [iOS 来源](ios-design/references/sources.md) 与 [macOS 来源](macos-design/references/sources.md)。
+| 平台 | 深度研究版 | 视觉精修版（2026-11-24） | 引用出处 |
+| --- | --- | --- | --- |
+| iOS | [设计规范](docs/ios-guidelines-2026.md) | [视觉精修版](docs/ios-visual-refinement-2026.md) | [资料来源](ios-design/references/sources.md) |
+| macOS | [设计规范](docs/macos-guidelines-2026.md) | [视觉精修版](docs/macos-visual-refinement-2026.md) | [资料来源](macos-design/references/sources.md) |
 
 本项目的 Skill、研究整理、示例代码及原创预览素材采用 [MIT License](LICENSE)。引用来源保留各自权利；Apple、iOS、macOS、SwiftUI 等名称与商标归其权利人所有。本项目为独立社区项目。

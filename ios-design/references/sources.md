@@ -76,3 +76,17 @@
   https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum
 - **[T06] W3C：WCAG 2.2 Target Size (Enhanced)，AAA（网页增强触控目标）**  
   https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+
+### 视觉精修版的补充出处
+
+新增视觉配方和自定义尺寸取自项目《iOS 原生应用设计规范 · 视觉精修版》（2026-11-24）。以下为新版引用的资料入口，系统行为和 API 以目标 SDK 及当前平台文档为准。
+
+| 编号 | 资料 | 用途 |
+| --- | --- | --- |
+| V01 | [Apple · Creating custom SF Symbols](https://developer.apple.com/documentation/technologyoverviews/creating-custom-sf-symbols) | 符号模板、基线、路径和边距 |
+| V02 | [Figma · Create a reusable icon grid](https://help.figma.com/hc/en-us/articles/18770195788951-Create-a-reusable-icon-grid) | 自绘图标网格与光学调整 |
+| V03 | [Apple HIG · App icons](https://developer.apple.com/design/human-interface-guidelines/app-icons) | 品牌图标、平台形状和不同外观 |
+| V04 | [Apple · CALayer contentsScale](https://developer.apple.com/documentation/quartzcore/calayer/contentsscale) | 显示倍率与像素 |
+| V05 | [W3C · Contrast Minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) | 普通文字对比的设计参考 |
+| V06 | [W3C · Non-text Contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html) | 必要图形和控件边界对比的设计参考 |
+| V07 | [Apple HIG · Focus and selection](https://developer.apple.com/design/human-interface-guidelines/focus-and-selection/) | 区分焦点和选择 |

@@ -57,3 +57,28 @@
 | T7 | MacRumors：All the Liquid Glass Changes in macOS Golden Gate | 透明度/对比度与新系统表现的第三方观察 | https://www.macrumors.com/2026/06/09/macos-golden-gate-liquid-glass/ |
 
 **文档界限：** 本规范中的系统正文字号、内建文字等级、平台组件行为、菜单规则、图标资源尺寸、当前 macOS 27 视觉变更均依据 Apple 资料。侧边栏初始宽度、窗口初始尺寸、自绘控件高度、间距 token、圆角和自定义动画时长属于统一视觉体系的推荐值；涉及用户系统设置的区域优先使用系统动态值。
+
+### 视觉精修版资料
+
+《macOS 原生应用设计规范 · 视觉精修版》，资料检索日期 2026-11-24。以下是其所列出处，设计数值和工作区配方为规范建议，应用前结合目标平台和实际内容判断。
+
+| 编号 | 资料 | 用途 |
+| --- | --- | --- |
+| V01 | Apple HIG：Typography — https://developer.apple.com/design/human-interface-guidelines/typography | 系统字体与文字角色 |
+| V02 | Apple Fonts — https://developer.apple.com/fonts/ | 系统字体、字重和等宽字体 |
+| V03 | Apple HIG：SF Symbols — https://developer.apple.com/design/human-interface-guidelines/sf-symbols | 符号字重、渲染及使用边界 |
+| V04 | Apple：Creating custom SF Symbols — https://developer.apple.com/documentation/technologyoverviews/creating-custom-sf-symbols | 自定义符号的模板与基线 |
+| V05 | Figma：Create a reusable icon grid — https://help.figma.com/hc/en-us/articles/18770195788951-Create-a-reusable-icon-grid | 自制图标网格 |
+| V06 | IBM：UI icons usage — https://www.ibm.com/design/language/iconography/ui-icons/usage/ | 图标视觉重量与留白 |
+| V07 | Apple HIG：App icons — https://developer.apple.com/design/human-interface-guidelines/app-icons | App 图标与系统外观 |
+| V08 | Apple WWDC25：Get to know the new design system — https://developer.apple.com/videos/play/wwdc2025/356/ | 形状、同心关系与光学对齐 |
+| V09 | Apple：CALayer contentsScale — https://developer.apple.com/documentation/quartzcore/calayer/contentsscale | 点与像素倍率 |
+| V10 | Apple：NSView backingAlignedRect — https://developer.apple.com/documentation/appkit/nsview/backingalignedrect(_:options:) | 对齐 backing store |
+| V11 | W3C：Contrast Minimum — https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html | 文字对比参考 |
+| V12 | W3C：Non-text Contrast — https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html | 组件和图形对比参考 |
+| V13 | Apple HIG：Focus and selection — https://developer.apple.com/design/human-interface-guidelines/focus-and-selection/ | 焦点与选择 |
+| V14 | Apple：Reduce Transparency — https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducetransparency | 减少透明度 |
+| V15 | Apple HIG：Materials — https://developer.apple.com/design/human-interface-guidelines/materials | 平台材质 |
+| V16 | NNGroup：Data Tables — https://www.nngroup.com/articles/data-tables/ | 数据表查找与比较 |
+| V17 | Apple HIG：Charting data — https://developer.apple.com/design/human-interface-guidelines/charting-data | 图表与数据关系 |
+| V18 | Apple HIG：Gestures — https://developer.apple.com/design/human-interface-guidelines/gestures | 输入设备与手势 |
